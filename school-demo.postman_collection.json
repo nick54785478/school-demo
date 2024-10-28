@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "b9f6ccb1-55ee-470c-b052-6ef9eff0d775",
-		"name": "report-demo",
+		"name": "school-demo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20865420"
 	},
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"number\":1,\r\n    \"name\":\"王小明\",\r\n    \"grade\":\"FIRST\",\r\n    \"studentClass\":\"A\"\r\n}",
+					"raw": "{\r\n    \"number\":2,\r\n    \"name\":\"蘇貞昌\",\r\n    \"grade\":\"SIXTH\",\r\n    \"studentClass\":\"C\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -43,7 +43,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"賴清德\",\r\n    \"subject\":\"國文\",\r\n    \"leadClass\":\"一年B班\",\r\n    \"isMentor\":\"Y\",\r\n    \"courses\":[\r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年B班\",\r\n            \"lesson\":\"第一節\",\r\n            \"weekDay\":\"週一\"\r\n        }, \r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年B班\",\r\n            \"lesson\":\"第二節\",\r\n            \"weekDay\":\"週一\"\r\n        }, \r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年B班\",\r\n            \"lesson\":\"第五節\",\r\n            \"weekDay\":\"週四\"\r\n        }, \r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年A班\",\r\n            \"lesson\":\"第八節\",\r\n            \"weekDay\":\"週四\"\r\n        }, \r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年A班\",\r\n            \"lesson\":\"第八節\",\r\n            \"weekDay\":\"週五\"\r\n        }\r\n    ]\r\n}\r\n// {\r\n//     \"name\":\"魚北七\",\r\n//     \"subject\":\"數學\",\r\n//     \"leadClass\":\"一年B班\",\r\n//     \"isMentor\":\"Y\"\r\n// }\r\n// {\r\n//     \"name\":\"王膝知\",\r\n//     \"subject\":\"英文\",\r\n//     \"leadClass\":\"一年B班\",\r\n//     \"isMentor\":\"Y\"\r\n// }",
+					"raw": "// {\r\n//     \"name\":\"賴清德\",\r\n//     \"subject\":\"國文\",\r\n//     \"leadClass\":\"一年B班\",\r\n//     \"isMentor\":\"Y\",\r\n//     \"courses\":[\r\n//         {\r\n//             \"name\":\"國文\",\r\n//             \"stuClass\":\"一年B班\",\r\n//             \"lesson\":\"第一節\",\r\n//             \"weekDay\":\"週一\"\r\n//         }, \r\n//         {\r\n//             \"name\":\"國文\",\r\n//             \"stuClass\":\"一年B班\",\r\n//             \"lesson\":\"第二節\",\r\n//             \"weekDay\":\"週一\"\r\n//         }, \r\n//         {\r\n//             \"name\":\"國文\",\r\n//             \"stuClass\":\"一年B班\",\r\n//             \"lesson\":\"第五節\",\r\n//             \"weekDay\":\"週四\"\r\n//         }, \r\n//         {\r\n//             \"name\":\"國文\",\r\n//             \"stuClass\":\"一年A班\",\r\n//             \"lesson\":\"第八節\",\r\n//             \"weekDay\":\"週四\"\r\n//         }, \r\n//         {\r\n//             \"name\":\"國文\",\r\n//             \"stuClass\":\"一年A班\",\r\n//             \"lesson\":\"第八節\",\r\n//             \"weekDay\":\"週五\"\r\n//         }\r\n//     ]\r\n// }\r\n{\r\n    \"name\":\"魚北七\",\r\n    \"subject\":\"國防\",\r\n    \"leadClass\":null,\r\n    \"isMentor\":\"N\",\r\n    \"courses\":[\r\n        {\r\n            \"name\":\"國防\",\r\n            \"stuClass\":\"一年B班\",\r\n            \"lesson\":\"第三節\",\r\n            \"weekDay\":\"週一\"\r\n        },\r\n        {\r\n            \"name\":\"國防\",\r\n            \"stuClass\":\"一年B班\",\r\n            \"lesson\":\"第四節\",\r\n            \"weekDay\":\"週一\"\r\n        }\r\n    ]\r\n}\r\n// {\r\n//     \"name\":\"王膝知\",\r\n//     \"subject\":\"英文\",\r\n//     \"leadClass\":\"一年B班\",\r\n//     \"isMentor\":\"Y\"\r\n// }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -67,7 +67,7 @@
 			"response": []
 		},
 		{
-			"name": "新增 DataMapping",
+			"name": "新增 DataMapping 資料",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -92,6 +92,180 @@
 						"v1",
 						"setting",
 						"createDataMapping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新 DataMapping 資料",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n    {\r\n        \"id\":1,\r\n        \"mapping\":\"學生資料清單\",\r\n        \"type\":\"HEADER\",\r\n        \"field\":\"number\",\r\n        \"value\":\"座號\",\r\n        \"description\":\"學生座號\",\r\n        \"priorityNo\":1,\r\n        \"activeFlag\":\"Y\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/setting/updateOption",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"setting",
+						"updateOption"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "查詢 Data Mapping 資料",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "stuClass",
+							"value": "一年B班",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "examDate",
+							"value": "2024-10-30 16:10:00",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "subject",
+							"value": "國文",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/setting/getMappingList?mapping=學生資料清單",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"setting",
+						"getMappingList"
+					],
+					"query": [
+						{
+							"key": "mapping",
+							"value": "學生資料清單"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增 Option Setting",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"一年A班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"一年A班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"一年B班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"一年B班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"一年C班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"一年C班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"一年D班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"一年D班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"二年A班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"二年A班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"二年B班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"二年B班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"二年C班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"二年C班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"二年D班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"二年D班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"三年A班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"三年A班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"三年B班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"三年B班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"三年C班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"三年C班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"三年D班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"三年D班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"四年A班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"四年A班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"四年B班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"四年B班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"四年C班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"四年C班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"四年D班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"四年D班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"五年A班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"五年A班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"五年B班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"五年B班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"五年C班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"五年C班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"五年D班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"五年D班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"六年A班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"priorityNo\":m\r\n        \"description\": \"六年A班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"六年B班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"六年B班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"六年C班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"六年C班\"\r\n    },\r\n    {\r\n        \"type\": \"STUDENT_CLASS\",\r\n        \"value\": \"六年D班\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"六年D班\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/option/createOption",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"option",
+						"createOption"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新 Option Setting 資料",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"type\": \"REPORT_TYPE\",\r\n        \"value\": \"班級成績單\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"班級成績單\",\r\n        \"priorityNo\": 1,\r\n        \"activeFlag\": \"Y\"\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"type\": \"REPORT_TYPE\",\r\n        \"value\": \"個人成績單\",\r\n        \"dependency\": null,\r\n        \"parent\": null,\r\n        \"description\": \"個人成績單\",\r\n        \"priorityNo\": 2,\r\n        \"activeFlag\": \"Y\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/option/updateOption",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"option",
+						"updateOption"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "查詢 Option Setting 資料",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/option?type=STUDENT_CLASS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"option"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "STUDENT_CLASS"
+						}
 					]
 				}
 			},
