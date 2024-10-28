@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="49786e60-e18f-4164-bb21-f29a87e0f397">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="number" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="stuClass" class="java.lang.String"/>
+	<parameter name="subject" class="java.lang.String"/>
+	<parameter name="score" class="java.lang.String"/>
+	<parameter name="sign" class="java.lang.String"/>
+	<parameter name="examDate" class="java.lang.String"/>
+	<parameter name="detailSize" class="java.lang.Integer"/>
+	<parameter name="priority" class="java.lang.String"/>
+	<parameter name="examClass" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="number" class="java.lang.Long"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="stuClass" class="java.lang.String"/>
+	<field name="subject" class="java.lang.String"/>
+	<field name="score" class="java.math.BigDecimal"/>
+	<field name="examDate" class="java.util.Date"/>
+	<field name="priority" class="java.lang.Integer"/>
+	<variable name="maxValue" class="java.math.BigDecimal" calculation="Highest">
+		<variableExpression><![CDATA[$F{score}]]></variableExpression>
+	</variable>
+	<variable name="avg" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{score}]]></variableExpression>
+	</variable>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{score}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupHeader>
+			<band height="21"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="221"/>
+		</groupFooter>
+	</group>
+	<group name="Group2" isReprintHeaderOnEachPage="true">
+		<groupHeader>
+			<band height="21">
+				<printWhenExpression><![CDATA[new Boolean ($V{REPORT_COUNT}!=$P{detailSize})]]></printWhenExpression>
+				<textField textAdjust="StretchHeight">
+					<reportElement stretchType="ContainerHeight" x="0" y="0" width="58" height="20" uuid="9582bf13-992f-4b5c-bd5e-7601c55f6964"/>
+					<textElement textAlignment="Center">
+						<font fontName="標楷體" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{number}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement stretchType="ContainerHeight" x="58" y="0" width="90" height="20" uuid="8d46deb2-359f-497b-a33c-e453b44a092c"/>
+					<textElement textAlignment="Center">
+						<font fontName="標楷體" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement stretchType="ContainerHeight" x="148" y="0" width="90" height="20" uuid="d593ebd0-d0b4-49dd-b449-7c7bcd40eef3"/>
+					<textElement textAlignment="Center">
+						<font fontName="標楷體" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{stuClass}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement stretchType="ContainerHeight" x="238" y="0" width="70" height="20" uuid="b7b5e193-a1f9-42c1-9b82-5df2bd584d46"/>
+					<textElement textAlignment="Center">
+						<font fontName="標楷體" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{subject}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement stretchType="ContainerHeight" x="308" y="0" width="132" height="20" uuid="2e177814-5620-4173-9035-7071484bc996"/>
+					<textElement textAlignment="Center">
+						<font fontName="標楷體" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{examDate}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement stretchType="ContainerHeight" x="440" y="0" width="70" height="20" uuid="1675c5e9-6e89-4ead-b70f-a68e4181ff97"/>
+					<textElement textAlignment="Center">
+						<font fontName="標楷體" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{score}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="20" width="555" height="1" uuid="2440d42d-72c1-4dfd-8453-401593e2099c"/>
+				</line>
+				<textField textAdjust="StretchHeight">
+					<reportElement stretchType="ContainerHeight" x="510" y="0" width="45" height="20" uuid="9604dfc4-205f-4d6d-856c-5dc3c6e8fdea">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font fontName="標楷體" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{priority}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="147"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement stretchType="ElementGroupHeight" x="80" y="24" width="430" height="30" uuid="02aee778-2393-4b01-9576-10970d806d95"/>
+				<textElement>
+					<font fontName="標楷體" size="19"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examClass}+$P{stuClass} + "成績單"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement stretchType="ContainerHeight" x="0" y="0" width="58" height="20" uuid="aa7833c9-387d-47de-8cd6-e9fea6838138"/>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement stretchType="ContainerHeight" x="58" y="0" width="90" height="20" uuid="6844b52a-3388-4470-bfed-0bef06c00ee7"/>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement stretchType="ContainerHeight" x="148" y="0" width="90" height="20" uuid="76921bea-38ef-45a2-85fa-85bac584ce1e"/>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stuClass}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement stretchType="ContainerHeight" x="238" y="0" width="70" height="20" uuid="183154ee-3062-4b9d-b874-cd088441c55b"/>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subject}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" pattern="MM/dd  a hh:mm ">
+				<reportElement stretchType="ContainerHeight" x="308" y="0" width="132" height="20" uuid="934ce666-be70-46d1-9542-864ef2466cca"/>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{examDate}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement stretchType="ContainerHeight" x="440" y="0" width="70" height="20" uuid="21605e2b-7dd9-4fb3-a72e-671988f352de"/>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{score}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement stretchType="ContainerHeight" x="510" y="0" width="45" height="20" uuid="4716b42a-3f35-4e01-ad20-3c33c6554355">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{priority}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25">
+			<rectangle>
+				<reportElement x="0" y="0" width="553" height="1" forecolor="#000000" backcolor="#050505" uuid="a1fd7394-ac14-4a6f-a449-d1343ad731ad">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="511" y="1" width="12" height="18" uuid="f765b664-55db-4609-ae7d-9c813643ac75">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="標楷體"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="538" y="1" width="16" height="18" uuid="ac67acbc-5ffb-4672-836c-1080231a9a62">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="標楷體"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="524" y="1" width="14" height="18" forecolor="#000000" backcolor="#050505" uuid="3fe80a3e-457c-4999-a74f-f022672fa5bf">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="標楷體" size="12"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="1" width="60" height="18" uuid="03829057-51ab-4d7a-84b5-e2c3098ec20c">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="標楷體"/>
+				</textElement>
+				<text><![CDATA[Page ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="143" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout"/>
+			<staticText>
+				<reportElement x="380" y="30" width="73" height="20" uuid="b60fe9e0-26f3-422b-b526-9ecf51442bab"/>
+				<textElement>
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<text><![CDATA[最高分:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="453" y="30" width="100" height="20" uuid="97ec571c-b18e-46cc-99fe-50e47baf8b04"/>
+				<textElement>
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{maxValue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="50" width="73" height="20" uuid="1cf5a0b1-6dec-4f74-95a8-85aa86436af6"/>
+				<textElement>
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<text><![CDATA[平均分數:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="453" y="50" width="100" height="20" uuid="6a897338-2c3e-4017-a9b4-c29e57961f3b"/>
+				<textElement>
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{avg}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="10" width="73" height="20" uuid="c0eba91d-526a-4f49-8e17-d85294155434"/>
+				<textElement>
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<text><![CDATA[總分:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="453" y="10" width="100" height="20" uuid="f6de97bc-2757-411a-8c86-96b739c79d6f"/>
+				<textElement>
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="380" y="120" width="73" height="19" uuid="50a48e2f-786d-4da8-b7d4-375ff5aee95c"/>
+				<textElement>
+					<font fontName="標楷體" size="14"/>
+				</textElement>
+				<text><![CDATA[家長簽章:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

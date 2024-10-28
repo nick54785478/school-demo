@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "b9f6ccb1-55ee-470c-b052-6ef9eff0d775",
+		"name": "report-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20865420"
+	},
+	"item": [
+		{
+			"name": "新增一筆學生資料",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"number\":1,\r\n    \"name\":\"王小明\",\r\n    \"grade\":\"FIRST\",\r\n    \"studentClass\":\"A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增一筆老師資料",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"賴清德\",\r\n    \"subject\":\"國文\",\r\n    \"leadClass\":\"一年B班\",\r\n    \"isMentor\":\"Y\",\r\n    \"courses\":[\r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年B班\",\r\n            \"lesson\":\"第一節\",\r\n            \"weekDay\":\"週一\"\r\n        }, \r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年B班\",\r\n            \"lesson\":\"第二節\",\r\n            \"weekDay\":\"週一\"\r\n        }, \r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年B班\",\r\n            \"lesson\":\"第五節\",\r\n            \"weekDay\":\"週四\"\r\n        }, \r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年A班\",\r\n            \"lesson\":\"第八節\",\r\n            \"weekDay\":\"週四\"\r\n        }, \r\n        {\r\n            \"name\":\"國文\",\r\n            \"stuClass\":\"一年A班\",\r\n            \"lesson\":\"第八節\",\r\n            \"weekDay\":\"週五\"\r\n        }\r\n    ]\r\n}\r\n// {\r\n//     \"name\":\"魚北七\",\r\n//     \"subject\":\"數學\",\r\n//     \"leadClass\":\"一年B班\",\r\n//     \"isMentor\":\"Y\"\r\n// }\r\n// {\r\n//     \"name\":\"王膝知\",\r\n//     \"subject\":\"英文\",\r\n//     \"leadClass\":\"一年B班\",\r\n//     \"isMentor\":\"Y\"\r\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/teacher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"teacher"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增 DataMapping",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n[\r\n    {\r\n        \"mapping\":\"學生資料清單\",\r\n        \"type\":\"HEADER\",\r\n        \"field\":\"number\",\r\n        \"value\":\"座號\",\r\n        \"description\":\"學生座號\",\r\n        \"priorityNo\":1\r\n    },\r\n    {\r\n        \"mapping\":\"學生資料清單\",\r\n        \"type\":\"HEADER\",\r\n        \"field\":\"name\",\r\n        \"value\":\"姓名\",\r\n        \"description\":\"姓名\",\r\n        \"priorityNo\":2\r\n    },\r\n    {\r\n        \"mapping\":\"學生資料清單\",\r\n        \"type\":\"HEADER\",\r\n        \"field\":\"grade\",\r\n        \"value\":\"年級\",\r\n        \"description\":\"年級\",\r\n        \"priorityNo\":3\r\n    },\r\n    {\r\n        \"mapping\":\"學生資料清單\",\r\n        \"type\":\"HEADER\",\r\n        \"field\":\"studentClass\",\r\n        \"value\":\"班別\",\r\n        \"description\":\"班別\",\r\n        \"priorityNo\":4\r\n    }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/setting/createDataMapping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"setting",
+						"createDataMapping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "上傳學生資料",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "mapping",
+							"value": "學生資料清單",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Desktop/student.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/student/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"student",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增學生應試資料",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"studentId\": \"bc6e5330-2748-4f4f-980f-2ad9abdfc796\",\r\n        \"stuClass\": \"一年A班\",\r\n        \"subject\": \"國文\",\r\n        \"score\": 100,\r\n        \"type\": \"平常考\",\r\n        \"testDate\": \"2024-11-25 16:10:00\",\r\n        \"invigilatorId\": \"513fe306-4845-4fb2-8fd2-9af87ba372e0\"\r\n    },\r\n\r\n    {\r\n        \"studentId\": \"3ff3496c-2444-427d-8502-0920f4ed79dd\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"國文\",\r\n        \"score\": 0,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"513fe306-4845-4fb2-8fd2-9af87ba372e0\"\r\n    },\r\n    {\r\n        \"studentId\": \"52306f7b-6c39-4e9b-b6c8-9fab022746f3\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"國文\",\r\n        \"score\": 10,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"513fe306-4845-4fb2-8fd2-9af87ba372e0\"\r\n    },\r\n    {\r\n        \"studentId\": \"0a8eaeca-0dea-4acd-ab24-a8fb5a33d4a7\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"國文\",\r\n        \"score\": 50,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"513fe306-4845-4fb2-8fd2-9af87ba372e0\"\r\n    },\r\n    //-- 數學\r\n    {\r\n        \"studentId\": \"3ff3496c-2444-427d-8502-0920f4ed79dd\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"數學\",\r\n        \"score\": 88,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"e920ba80-d50e-4882-96e0-6e0b2368bea2\"\r\n    },\r\n    {\r\n        \"studentId\": \"52306f7b-6c39-4e9b-b6c8-9fab022746f3\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"數學\",\r\n        \"score\": 70,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"e920ba80-d50e-4882-96e0-6e0b2368bea2\"\r\n    },\r\n    {\r\n        \"studentId\": \"0a8eaeca-0dea-4acd-ab24-a8fb5a33d4a7\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"數學\",\r\n        \"score\": 80,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"e920ba80-d50e-4882-96e0-6e0b2368bea2\"\r\n    },\r\n\r\n    //-- 英文\r\n        {\r\n        \"studentId\": \"3ff3496c-2444-427d-8502-0920f4ed79dd\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"英文\",\r\n        \"score\": 60,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"c8ace553-6469-466b-adca-2f1da5b95fe3\"\r\n    },\r\n    {\r\n        \"studentId\": \"52306f7b-6c39-4e9b-b6c8-9fab022746f3\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"英文\",\r\n        \"score\": 90,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"c8ace553-6469-466b-adca-2f1da5b95fe3\"\r\n    },\r\n    {\r\n        \"studentId\": \"0a8eaeca-0dea-4acd-ab24-a8fb5a33d4a7\",\r\n        \"stuClass\": \"一年B班\",\r\n        \"subject\": \"英文\",\r\n        \"score\": 80,\r\n        \"type\": \"期中考\",\r\n        \"testDate\": \"2024-10-30 16:10:00\",\r\n        \"invigilatorId\": \"c8ace553-6469-466b-adca-2f1da5b95fe3\"\r\n    }\r\n    \r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/exam",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"exam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "查詢該班的所有學生",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\":\"5dc82f24-5f9e-49cd-a826-a1ded9338211\",\r\n    \"stuClass\":\"一年B班\",\r\n    \"subject\":\"國文\",\r\n    \"score\":0,\r\n    \"type\":\"期中考\",\r\n    \"testDate\":\"2024-10-30 16:10:00\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/student/queryByClass?className=一年A班",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"student",
+						"queryByClass"
+					],
+					"query": [
+						{
+							"key": "className",
+							"value": "一年A班"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "查詢班級考試成績",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "stuClass",
+							"value": "一年B班",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "examDate",
+							"value": "2024-10-30 16:10:00",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "subject",
+							"value": "國文",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/exam/queryExam?stuClass=一年B班&examDate=2024-10-30 16:10:00&subject=國文",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"exam",
+						"queryExam"
+					],
+					"query": [
+						{
+							"key": "stuClass",
+							"value": "一年B班"
+						},
+						{
+							"key": "examDate",
+							"value": "2024-10-30 16:10:00"
+						},
+						{
+							"key": "subject",
+							"value": "國文"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "查詢班級考試成績",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    // \"stuClass\":\"一年B班\",\r\n    // \"subject\": \"數學\",\r\n    \"startDate\":\"2024-11-25 16:10:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/exam/query",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"exam",
+						"query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "上傳 Jasper 範本",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "requestData",
+							"value": "{\"type\":\"班級成績單\", \"fileName\":\"班級成績單\", \"description\":\"班級成績單範本\"}",
+							"contentType": "application/json",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Desktop/SpringBootWorkSpace/report-demo/src/main/resources/report/Transcript.jasper",
+							"disabled": true
+						},
+						{
+							"key": "requestData",
+							"value": "{\"type\":\"個人成績單\", \"fileName\":\"個人成績單(主)\", \"description\":\"個人成績單單範本(主)\"}",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Desktop/SpringBootWorkSpace/report-demo/src/main/resources/report/Personal_Transcript_main.jasper"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/report/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"report",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "下載班級成績單",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stuClass\":\"一年B班\",\r\n    \"examDate\":\"2024-10-30 16:10:00\",\r\n    \"subject\":\"國文\",\r\n    \"type\":\"班級成績單\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/exam/downloadTranscript",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"exam",
+						"downloadTranscript"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "下載個人成績單",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stuClass\":\"一年B班\",\r\n    \"examDate\":\"2024-10-30 16:10:00\",\r\n    // \"subjects\":[\"國文\", \"英文\", \"數學\"],\r\n    \"reportType\":\"個人成績單\",\r\n    \"type\":\"期中考\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/exam/downloadTranscript/0a8eaeca-0dea-4acd-ab24-a8fb5a33d4a7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"exam",
+						"downloadTranscript",
+						"0a8eaeca-0dea-4acd-ab24-a8fb5a33d4a7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
