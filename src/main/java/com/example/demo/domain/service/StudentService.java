@@ -15,11 +15,14 @@ import org.springframework.stereotype.Service;
 import com.example.demo.domain.mapping.aggregate.DataMapping;
 import com.example.demo.domain.share.StudentCreated;
 import com.example.demo.domain.share.StudentQueried;
+import com.example.demo.domain.share.StudentUpdated;
 import com.example.demo.domain.student.aggregate.Student;
 import com.example.demo.domain.student.aggregate.vo.Grade;
 import com.example.demo.domain.student.aggregate.vo.StudentClass;
 import com.example.demo.domain.student.command.CreateStudentCommand;
+import com.example.demo.domain.student.command.UpdateStudentCommand;
 import com.example.demo.domain.student.command.UploadStudentCommand;
+import com.example.demo.exception.ValidationException;
 import com.example.demo.infra.repository.DataMappingRepository;
 import com.example.demo.infra.repository.StudentRepository;
 import com.example.demo.util.BaseDataTransformer;
@@ -45,6 +48,22 @@ public class StudentService {
 		Student saved = studentRepository.save(student);
 		return new StudentCreated(saved.getUuid());
 	}
+	
+	/**
+	 * 更新學生資料
+	 * 
+	 * @param command
+	 */
+	public StudentUpdated update(UpdateStudentCommand command) {
+		studentRepository.findById(command.getUuid()).ifPresentOrElse(student -> {
+			student.update(command);
+			studentRepository.save(student);
+		}, () -> {
+			throw new ValidationException("VALIDATE_FAILED", "查無此資料，更新失敗");
+		});
+		return new StudentUpdated(command.getUuid());
+	}
+	
 
 	/**
 	 * 查詢該班的學生

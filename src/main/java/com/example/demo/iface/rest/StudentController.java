@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,12 +19,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.domain.share.StudentQueried;
 import com.example.demo.domain.student.command.CreateStudentCommand;
+import com.example.demo.domain.student.command.UpdateStudentCommand;
 import com.example.demo.domain.student.command.UploadStudentCommand;
 import com.example.demo.exception.ValidationException;
 import com.example.demo.iface.dto.BaseResponseResource;
 import com.example.demo.iface.dto.CreateStudentResource;
 import com.example.demo.iface.dto.StudentCreatedResource;
 import com.example.demo.iface.dto.StudentQueriedResource;
+import com.example.demo.iface.dto.StudentUpdatedResource;
+import com.example.demo.iface.dto.UpdateStudentResource;
 import com.example.demo.service.StudentCommandService;
 import com.example.demo.service.StudentQueryService;
 import com.example.demo.util.BaseDataTransformer;
@@ -55,11 +59,25 @@ public class StudentController {
 	}
 
 	/**
+	 * 更新一筆學生資料
+	 * 
+	 * @param resource
+	 * @return ResponseEntity<StudentCreatedResource>
+	 */
+	@PutMapping("")
+	public ResponseEntity<StudentUpdatedResource> update(@RequestBody UpdateStudentResource resource) {
+		UpdateStudentCommand command = BaseDataTransformer.transformData(resource, UpdateStudentCommand.class);
+		return new ResponseEntity<>(
+				BaseDataTransformer.transformData(studentCommandService.update(command), StudentUpdatedResource.class),
+				HttpStatus.CREATED);
+	}
+
+	/**
 	 * 查詢該班的所有學生
 	 * 
 	 * @param className 班級，一年A班
 	 * @return List<StudentQueriedResource>
-	 * */
+	 */
 	@GetMapping("/queryByClass")
 	public ResponseEntity<List<StudentQueriedResource>> queryAll(@RequestParam(name = "className") String className) {
 		List<StudentQueried> studentList = studentQueryService.queryAllStudents(className);

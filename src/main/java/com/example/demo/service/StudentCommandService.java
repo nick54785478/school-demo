@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.service.StudentService;
 import com.example.demo.domain.share.StudentCreated;
+import com.example.demo.domain.share.StudentUpdated;
 import com.example.demo.domain.student.command.CreateStudentCommand;
+import com.example.demo.domain.student.command.UpdateStudentCommand;
 import com.example.demo.domain.student.command.UploadStudentCommand;
 
 @Service
@@ -26,6 +28,16 @@ public class StudentCommandService {
 	 */
 	public StudentCreated create(CreateStudentCommand command) {
 		return studentService.create(command);
+	}
+	
+	/**
+	 * 更新一筆學生資料
+	 * 
+	 * @param command
+	 * @return StudentCreated
+	 */
+	public StudentUpdated update(UpdateStudentCommand command) {
+		return studentService.update(command);
 	}
 
 	/**

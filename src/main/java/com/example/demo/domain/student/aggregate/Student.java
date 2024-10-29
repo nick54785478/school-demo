@@ -10,6 +10,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import com.example.demo.domain.student.aggregate.vo.Grade;
 import com.example.demo.domain.student.aggregate.vo.StudentClass;
 import com.example.demo.domain.student.command.CreateStudentCommand;
+import com.example.demo.domain.student.command.UpdateStudentCommand;
+import com.example.demo.util.DateTransformUtil;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,30 +40,30 @@ import lombok.ToString;
 public class Student {
 
 	@Id
-	private String uuid;	// 學生代號
-	
+	private String uuid; // 學生代號
+
 	@Transient
 	private String u;
-	
-	private Long number;	// 座號
-	
-	private String name;	// 學生名稱
+
+	private Long number; // 座號
+
+	private String name; // 學生名稱
 
 	@Column(name = "GRADE")
 	@Enumerated(EnumType.STRING)
 	private Grade grade; // 年級
-	
+
 	@Column(name = "STUDENT_CLASS")
 	@Enumerated(EnumType.STRING)
-	private StudentClass studentClass;	// 學生班級
-	
+	private StudentClass studentClass; // 學生班級
+
 	@CreatedDate
 	@Column(name = "CREATED_DATE")
-	private Date createdDate;	// 入學時間
-	
+	private Date createdDate; // 入學時間
+
 	@Column(name = "GRADUATED_DATE")
-	private Date graduateDate;	// 畢業日期
-	
+	private Date graduateDate; // 畢業日期
+
 	@Column(name = "ACTIVE_FLAG")
 	private String activeFlag = "Y"; // 是否有效
 
@@ -76,10 +78,10 @@ public class Student {
 	}
 
 	/**
-	 * 建立 Student Entity
+	 * 建立 Student 資料
 	 * 
 	 * @param command
-	 * */
+	 */
 	public void create(CreateStudentCommand command) {
 		this.u = UUID.randomUUID().toString();
 		this.number = command.getNumber();
@@ -89,5 +91,19 @@ public class Student {
 		this.activeFlag = "Y";
 	}
 
+	/**
+	 * 更新 Student 資料
+	 * 
+	 * @param command
+	 */
+	public void update(UpdateStudentCommand command) {
+		this.number = command.getNumber();
+		this.name = command.getName();
+		this.grade = Grade.valueOf(command.getGrade());
+		this.studentClass = StudentClass.valueOf(command.getStudentClass());
+		this.graduateDate = (command.getGraduatedDate() == null) ? null
+				: DateTransformUtil.parse("yyyy:MM:dd hh:mm:ss", command.getGraduatedDate());
+		this.activeFlag = command.getActiveFlag();
+	}
 
 }
