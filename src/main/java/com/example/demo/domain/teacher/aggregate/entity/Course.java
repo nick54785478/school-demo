@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import com.example.demo.domain.teacher.aggregate.vo.Lesson;
 import com.example.demo.domain.teacher.aggregate.vo.Week;
 import com.example.demo.domain.teacher.command.CreateTeacherCourseCommand;
+import com.example.demo.domain.teacher.command.UpdateTeacherCourseCommand;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -55,6 +56,20 @@ public class Course {
 	 */
 	public void create(CreateTeacherCourseCommand command, String teacherId) {
 		this.teacherId = teacherId;
+		this.name = command.getName();
+		this.stuClass = command.getStuClass();
+		this.lesson = Lesson.fromLabel(command.getLesson());
+		this.time = LocalTime.parse(this.lesson.getTime());
+		this.weekDay = Week.fromLabel(command.getWeekDay());
+	}
+	
+	/**
+	 * 更新老師教課資料
+	 * 
+	 * @param command
+	 */
+	public void update(UpdateTeacherCourseCommand command) {
+		this.teacherId = command.getTeacherId();
 		this.name = command.getName();
 		this.stuClass = command.getStuClass();
 		this.lesson = Lesson.fromLabel(command.getLesson());

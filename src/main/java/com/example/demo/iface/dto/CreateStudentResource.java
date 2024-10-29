@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateStudentResource {
-
+	
 	private Long number; // 座號
 
 	private String name; // 學生名稱

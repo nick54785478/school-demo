@@ -2,14 +2,19 @@ package com.example.demo.domain.teacher.aggregate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.example.demo.domain.teacher.aggregate.entity.Course;
 import com.example.demo.domain.teacher.command.CreateTeacherCommand;
 import com.example.demo.domain.teacher.command.CreateTeacherCourseCommand;
+import com.example.demo.domain.teacher.command.UpdateTeacherCommand;
+import com.example.demo.domain.teacher.command.UpdateTeacherCourseCommand;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -86,6 +91,26 @@ public class Teacher {
 			this.courses.add(course);
 		});
 		
+	}
+	
+	/**
+	 * 更新老師資料
+	 * 
+	 * @param command
+	 * */
+	public void update(UpdateTeacherCommand command) {
+		this.name = command.getName();
+		this.leadClass = command.getLeadClass();
+		this.isMentor = command.getIsMentor();
+		this.subject = command.getSubject();
+		Map<Long, UpdateTeacherCourseCommand> map = command.getCourses().stream()
+				.collect(Collectors.toMap(UpdateTeacherCourseCommand::getId, Function.identity()));
+		// 遍歷更新課程資料
+		this.courses.stream().forEach(course -> {
+			if (!Objects.isNull(map.get(course.getId()))) {
+				course.update(map.get(course.getId()));
+			}
+		});
 	}
 
 }

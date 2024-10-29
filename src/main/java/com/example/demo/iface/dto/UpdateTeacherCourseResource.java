@@ -7,13 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateTeacherCourseResource {
+public class UpdateTeacherCourseResource {
+	
+	private Long id; // id
 
-	private Long id;
-	
 	private String name;
-	
-	private String teacherId;
 	
 	private String stuClass;
 	

@@ -8,9 +8,11 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.share.TeacherCreated;
+import com.example.demo.domain.share.TeacherUpdated;
 import com.example.demo.domain.teacher.aggregate.Teacher;
 import com.example.demo.domain.teacher.command.CreateTeacherCommand;
 import com.example.demo.domain.teacher.command.CreateTeacherCourseCommand;
+import com.example.demo.domain.teacher.command.UpdateTeacherCommand;
 import com.example.demo.exception.ValidationException;
 import com.example.demo.infra.repository.TeacherRepository;
 
@@ -26,12 +28,28 @@ public class TeacherService {
 	 * 新增一筆老師資料
 	 * 
 	 * @param command
+	 * @return TeacherCreated
 	 */
 	public TeacherCreated create(CreateTeacherCommand command) {
 		Teacher teacher = new Teacher();
 		teacher.create(command);
 		Teacher saved = teacherRepository.save(teacher);
 		return new TeacherCreated(saved.getUuid());
+	}
+
+	/**
+	 * 更新一筆老師資料
+	 * 
+	 * @param command
+	 * @return TeacherUpdated
+	 */
+	public TeacherUpdated update(UpdateTeacherCommand command) {
+		teacherRepository.findById(command.getUuid()).ifPresent(teacher -> {
+			teacher.update(command);
+			teacherRepository.save(teacher);
+		});
+
+		return new TeacherUpdated(command.getUuid());
 	}
 
 	/**

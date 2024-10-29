@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.service.TeacherService;
 import com.example.demo.domain.share.TeacherCreated;
+import com.example.demo.domain.share.TeacherUpdated;
 import com.example.demo.domain.teacher.command.CreateTeacherCommand;
+import com.example.demo.domain.teacher.command.UpdateTeacherCommand;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, timeout = 36000, rollbackFor = Exception.class)
@@ -28,4 +30,15 @@ public class TeacherCommandService {
 		
 		return teacherService.create(command);
 	}
+	
+	/**
+	 * 更新一筆老師資料
+	 * 
+	 * @param command
+	 */
+	public TeacherUpdated update(UpdateTeacherCommand command) {
+		return teacherService.update(command);
+	}
+	
+	
 }
